@@ -41,11 +41,11 @@ public class Task03Solver {
     }
 
     public void second(List<String> input) {
-        Map<Integer, Occurrence> occurrences = getOccurrences(input);
         List<String> oxygenTemp = new ArrayList<>(input);
         int length = oxygenTemp.get(0).length();
         for (int i = 0; i < length && oxygenTemp.size() > 1; i++) {
             int finalI = i;
+            Map<Integer, Occurrence> occurrences = getOccurrences(oxygenTemp);
             oxygenTemp.removeIf(s -> !occurrences.get(finalI).getMostCommon().equals(s.split("")[finalI]));
         }
         int oxygen = Integer.parseInt(oxygenTemp.get(0), 2);
@@ -54,6 +54,7 @@ public class Task03Solver {
         List<String> co2Temp = new ArrayList<>(input);
         for (int i = 0; i < length && co2Temp.size() > 1; i++) {
             int finalI = i;
+            Map<Integer, Occurrence> occurrences = getOccurrences(co2Temp);
             co2Temp.removeIf(s -> !occurrences.get(finalI).getLeastCommon().equals(s.split("")[finalI]));
         }
         int co2 = Integer.parseInt(co2Temp.get(0), 2);

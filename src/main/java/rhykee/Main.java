@@ -4,6 +4,8 @@ import rhykee.solver.task01.Task01Solver;
 import rhykee.solver.task02.Task02Solver;
 import rhykee.solver.task03.Task03Solver;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static rhykee.util.HttpUtils.getInputForDay;

@@ -13,9 +13,9 @@ public class Main {
 
     public static void main(String[] args) {
         String cookie = args[0];
-        day01(getInputForDay(1, cookie));
-        day02(getInputForDay(2, cookie));
-        day03(getInputForDay(3, cookie));
+        //day01(getInputForDay(1, cookie));
+        //day02(getInputForDay(2, cookie));
+        //day03(getInputForDay(3, cookie));
         day04(getInputForDay(4, cookie));
     }
 
@@ -38,9 +38,11 @@ public class Main {
     }
 
     private static void day04(List<String> inputForDay) {
+        long startTime = System.currentTimeMillis();
         Task04Solver task04Solver = new Task04Solver();
-        task04Solver.part1(inputForDay);
-        task04Solver.part2(inputForDay);
+            task04Solver.part1(inputForDay);
+            task04Solver.part2(inputForDay);
+        System.out.println(System.currentTimeMillis() - startTime);
     }
 
 }

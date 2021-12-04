@@ -11,6 +11,8 @@ public class BingoBoard {
 
     private final Map<Integer, BoardPosition> positionsByValue = new HashMap<>();
     private final BoardPosition[][] positions;
+    private final Map<Integer, Integer> rowCounts = new HashMap<>();
+    private final Map<Integer, Integer> columnCounts = new HashMap<>();
 
     public BingoBoard(String boardInput) {
         positions = Arrays.stream(boardInput.split("\n"))
@@ -26,38 +28,31 @@ public class BingoBoard {
                 positionsByValue.put(currentPos.value, currentPos);
             }
         }
+        for (int i = 0; i < 5; i++) {
+            rowCounts.put(i, 0);
+            columnCounts.put(i, 0);
+        }
     }
 
     public boolean markNumberIsBingo(int number) {
         if (positionsByValue.containsKey(number)) {
             BoardPosition boardPosition = positionsByValue.get(number);
             boardPosition.setMarked(true);
-            return isItBingo(boardPosition);
+            int currentRow = boardPosition.row;
+            int currentColumn = boardPosition.column;
+            rowCounts.computeIfPresent(currentRow, (key, currentCount) -> currentCount + 1);
+            columnCounts.computeIfPresent(currentColumn, (key, currentCount) -> currentCount + 1);
+            return rowCounts.get(currentRow) == 5 || columnCounts.get(currentColumn) == 5;
         }
         return false;
     }
 
-    public long getResultOfBingo(int lastCalledNumber){
+    public long getResultOfBingo(int lastCalledNumber) {
         return Arrays.stream(positions)
                 .flatMap(Arrays::stream)
                 .filter(pos -> !pos.isMarked())
                 .mapToLong(BoardPosition::getValue)
                 .sum() * lastCalledNumber;
-    }
-
-    private boolean isItBingo(BoardPosition boardPosition) {
-        return Arrays.stream(positions[boardPosition.row])
-                .allMatch(BoardPosition::isMarked)
-                || Arrays.stream(getColumn(boardPosition.column))
-                .allMatch(BoardPosition::isMarked);
-    }
-
-    private BoardPosition[] getColumn(int column) {
-        BoardPosition[] columnPositions = new BoardPosition[positions.length];
-        for (int i = 0; i < positions.length; i++) {
-            columnPositions[i] = positions[i][column];
-        }
-        return columnPositions;
     }
 
     @Data

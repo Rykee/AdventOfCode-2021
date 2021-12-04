@@ -3,9 +3,8 @@ package rhykee;
 import rhykee.solver.task01.Task01Solver;
 import rhykee.solver.task02.Task02Solver;
 import rhykee.solver.task03.Task03Solver;
+import rhykee.solver.task04.Task04Solver;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static rhykee.util.HttpUtils.getInputForDay;
@@ -17,6 +16,7 @@ public class Main {
         day01(getInputForDay(1, cookie));
         day02(getInputForDay(2, cookie));
         day03(getInputForDay(3, cookie));
+        day04(getInputForDay(4, cookie));
     }
 
     private static void day01(List<String> input) {
@@ -35,6 +35,12 @@ public class Main {
         Task03Solver task03Solver = new Task03Solver();
         task03Solver.first(input);
         task03Solver.second(input);
+    }
+
+    private static void day04(List<String> inputForDay) {
+        Task04Solver task04Solver = new Task04Solver();
+        task04Solver.part1(inputForDay);
+        task04Solver.part2(inputForDay);
     }
 
 }

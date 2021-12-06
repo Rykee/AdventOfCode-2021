@@ -5,6 +5,7 @@ import rhykee.solver.task02.Task02Solver;
 import rhykee.solver.task03.Task03Solver;
 import rhykee.solver.task04.Task04Solver;
 import rhykee.solver.task05.Task05Solver;
+import rhykee.solver.task06.Task06Solver;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,6 +21,7 @@ public class Main {
         day03(getInputForDay(3, cookie));
         day04(getInputForDay(4, cookie));
         day05(getInputForDay(5, cookie));
+        day06(getInputForDay(6,cookie));
     }
 
     private static void day01(List<String> input) {
@@ -50,6 +52,12 @@ public class Main {
         Task05Solver task05Solver = new Task05Solver();
         task05Solver.part1(input);
         task05Solver.part2(input);
+    }
+
+    private static void day06(List<String> input) {
+        Task06Solver task06Solver = new Task06Solver();
+        task06Solver.part1(input);
+        task06Solver.part2(input);
     }
 
 }

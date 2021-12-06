@@ -12,7 +12,7 @@ public class SimpleLine {
     private final Point end;
 
     public SimpleLine(Point point1, Point point2) {
-        if(point1.getX()<point2.getX() || point1.getY()<point2.getY()){
+        if (point1.getX() < point2.getX() || point1.getY() < point2.getY()) {
             start = point1;
             end = point2;
         } else {

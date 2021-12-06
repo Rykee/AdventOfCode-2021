@@ -41,24 +41,27 @@ public class Task06Solver implements Challenge {
             fishAges.putIfAbsent(i, 0L);
         }
         for (int i = 0; i < 256; i++) {
-            Map<Integer, Long> newAges = new HashMap<>();
-            for (int j = 0; j <= 8; j++) {
-                newAges.putIfAbsent(j, 0L);
-            }
+            Map<Integer, Long> newAges = getEmptyMap();
             for (int j = 8; j >= 0; j--) {
-                int finalJ = j;
-                Map<Integer, Long> finalFishAges = fishAges;
                 if (j == 0) {
-                    newAges.computeIfPresent(8, (newFish, currentCount) -> finalFishAges.get(finalJ) + currentCount);
-                    newAges.computeIfPresent(6, (integer, currentCount) -> finalFishAges.get(finalJ) + currentCount);
+                    newAges.put(8, fishAges.get(0));
+                    newAges.put(6, fishAges.get(0) + newAges.get(6));
                 } else {
-                    newAges.computeIfPresent(j - 1, (integer, currentCount) -> finalFishAges.get(finalJ) + currentCount);
+                    newAges.put(j - 1, fishAges.get(j) + newAges.get(j - 1));
                 }
             }
             fishAges = newAges;
         }
         long fullCount = fishAges.values().stream().mapToLong(value -> value).sum();
         System.out.println("Day 6 2/2: " + fullCount);
+    }
+
+    private Map<Integer, Long> getEmptyMap() {
+        Map<Integer, Long> newAges = new HashMap<>();
+        for (int j = 0; j <= 8; j++) {
+            newAges.putIfAbsent(j, 0L);
+        }
+        return newAges;
     }
 
 }

@@ -47,7 +47,7 @@ public class Task06Solver implements Challenge {
                     newAges.put(8, fishAges.get(0));
                     newAges.put(6, fishAges.get(0) + newAges.get(6));
                 } else {
-                    newAges.put(j - 1, fishAges.get(j) + newAges.get(j - 1));
+                    newAges.put(j - 1, fishAges.get(j));
                 }
             }
             fishAges = newAges;

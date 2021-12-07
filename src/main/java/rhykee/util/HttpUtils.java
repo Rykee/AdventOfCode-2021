@@ -17,9 +17,9 @@ public class HttpUtils {
 
     private static final String BASE_URL = "https://adventofcode.com/2021/day/";
 
-    public static List<String> getInputForDay(int day, String cookie) {
+    public static List<String> getInput(int day, String cookie) {
         try (CloseableHttpClient client = HttpClients.createDefault()) {
-            HttpGet request = new HttpGet(BASE_URL + day+"/input");
+            HttpGet request = new HttpGet(BASE_URL + day + "/input");
             request.addHeader("cookie", cookie);
             CloseableHttpResponse response = client.execute(request);
             return Arrays.stream(new BasicResponseHandler().handleResponse(response).split("\n"))

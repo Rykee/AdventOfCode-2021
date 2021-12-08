@@ -7,6 +7,7 @@ import rhykee.solver.task04.Task04Solver;
 import rhykee.solver.task05.Task05Solver;
 import rhykee.solver.task06.Task06Solver;
 import rhykee.solver.task07.Task07Solver;
+import rhykee.solver.task08.Task08Solver;
 
 import java.util.List;
 
@@ -16,13 +17,20 @@ public class Main {
 
     public static void main(String[] args) {
         String cookie = args[0];
-        day01(getInput(1, cookie));
+        /*day01(getInput(1, cookie));
         day02(getInput(2, cookie));
         day03(getInput(3, cookie));
         day04(getInput(4, cookie));
         day05(getInput(5, cookie));
         day06(getInput(6, cookie));
-        day07(getInput(7, cookie));
+        day07(getInput(7, cookie));*/
+        day08(getInput(8, cookie));
+    }
+
+    private static void day08(List<String> input) {
+        Task08Solver task08Solver = new Task08Solver();
+        task08Solver.part1(input);
+        task08Solver.part2(input);
     }
 
     private static void day01(List<String> input) {

@@ -82,7 +82,10 @@ public class Task09Solver implements Challenge {
         if (i != heightData.length - 1 && heightData[i + 1][j] <= currentNumber) {
             return false;
         }
-        return j == heightData[i].length - 1 || heightData[i][j + 1] > currentNumber;
+        if (j != heightData[i].length - 1 && heightData[i][j + 1] <= currentNumber) {
+            return false;
+        }
+        return true;
     }
 
     private int[][] mapToIntGrid(List<String> lines) {

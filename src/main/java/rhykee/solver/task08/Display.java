@@ -19,7 +19,8 @@ public class Display {
     private final List<Set<Character>> patterns;
     private final List<Set<Character>> numbers;
     private final BiMap<Integer, Set<Character>> patternMap = HashBiMap.create();
-    /*      0
+    /*
+            0
         *********
         *       *
       1 *       * 2

@@ -24,6 +24,6 @@ public class Task08Solver implements Challenge {
                 .reduce(Integer::sum)
                 .get();
 
-        System.out.println("Day 8 2/2: " + sum);
+        //  System.out.println("Day 8 2/2: " + sum);
     }
 }

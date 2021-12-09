@@ -1,12 +1,15 @@
 package rhykee.solver.task04;
 
+import rhykee.solver.Challenge;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Task04Solver {
+public class Task04Solver implements Challenge {
 
+    @Override
     public void part1(List<String> lines) {
         List<Integer> bingoNumbers = Arrays.stream(lines.get(0).split(","))
                 .map(Integer::parseInt)
@@ -25,6 +28,7 @@ public class Task04Solver {
         }
     }
 
+    @Override
     public void part2(List<String> lines) {
         List<Integer> bingoNumbers = Arrays.stream(lines.get(0).split(","))
                 .map(Integer::parseInt)

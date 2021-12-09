@@ -1,5 +1,6 @@
 package rhykee.solver.task02;
 
+import rhykee.solver.Challenge;
 import rhykee.solver.task02.model.AimingSubmarine;
 import rhykee.solver.task02.model.Instruction;
 import rhykee.solver.task02.model.Instruction.Direction;
@@ -8,9 +9,10 @@ import rhykee.solver.task02.model.Submarine;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Task02Solver {
+public class Task02Solver implements Challenge {
 
-    public void applyInstructions(List<String> input) {
+    @Override
+    public void part1(List<String> input) {
         Submarine submarine = new Submarine();
         List<Instruction> instructions = input.stream()
                 .map(s -> s.split(" "))
@@ -22,7 +24,8 @@ public class Task02Solver {
         System.out.println("Day 2 1/2: " + submarine.getProduct());
     }
 
-    public void applyInstructionsAiming(List<String> input){
+    @Override
+    public void part2(List<String> input) {
         AimingSubmarine submarine = new AimingSubmarine();
         List<Instruction> instructions = input.stream()
                 .map(Instruction::new)

@@ -1,6 +1,7 @@
 package rhykee.solver.task03;
 
 import lombok.Data;
+import rhykee.solver.Challenge;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,9 +9,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.IntStream;
 
-public class Task03Solver {
+public class Task03Solver implements Challenge {
 
-    public void first(List<String> input) {
+    @Override
+    public void part1(List<String> input) {
         Map<Integer, Occurrence> occurrences = getOccurrences(input);
 
         StringBuilder gammaRate = new StringBuilder();
@@ -40,7 +42,8 @@ public class Task03Solver {
         return occurrences;
     }
 
-    public void second(List<String> input) {
+    @Override
+    public void part2(List<String> input) {
         List<String> oxygenTemp = new ArrayList<>(input);
         int length = oxygenTemp.get(0).length();
         for (int i = 0; i < length && oxygenTemp.size() > 1; i++) {
@@ -59,7 +62,7 @@ public class Task03Solver {
         }
         int co2 = Integer.parseInt(co2Temp.get(0), 2);
         System.out.println(co2Temp.get(0) + " " + co2);
-        System.out.println("Day 3 2/2: " + co2*oxygen);
+        System.out.println("Day 3 2/2: " + co2 * oxygen);
     }
 
     @Data

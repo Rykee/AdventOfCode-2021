@@ -11,12 +11,13 @@ public class Main {
 
     public static void main(String[] args) {
         String cookie = args[0];
-        for (int i = 9; i <= 9; i++) {
+        for (int i = 10; i <= 10; i++) {
             Challenge solverByDay = ReflectionUtils.getSolverByDay(i);
             List<String> input = getInput(i, cookie);
             solverByDay.part1(input);
             solverByDay.part2(input);
         }
+
     }
 
 }

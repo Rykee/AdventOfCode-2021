@@ -20,6 +20,11 @@ public class DumboGrid {
         Set<Coordinate> viableCoordinates = new HashSet<>();
         height = octopi.size();
         width = octopi.get(0).length();
+        parseInput(octopi, viableCoordinates);
+        dumbos.values().forEach(dumbo -> dumbo.removeUnreachableCoordinates(viableCoordinates));
+    }
+
+    private void parseInput(List<String> octopi, Set<Coordinate> viableCoordinates) {
         for (int i = 0; i < octopi.size(); i++) {
             for (int j = 0; j < octopi.get(i).length(); j++) {
                 Coordinate position = new Coordinate(i, j);
@@ -28,7 +33,6 @@ public class DumboGrid {
                 viableCoordinates.add(position);
             }
         }
-        dumbos.values().forEach(dumbo -> dumbo.removeUnreachableCoordinates(viableCoordinates));
     }
 
     public int getPopulation() {
@@ -37,6 +41,15 @@ public class DumboGrid {
 
     public int flash() {
         Set<Coordinate> hasFlashed = new HashSet<>();
+        doInitialFlashes(hasFlashed);
+        if (!hasFlashed.isEmpty()) {
+            doAdditionalFlashes(hasFlashed);
+        }
+        hasFlashed.forEach(coordinate -> dumbos.get(coordinate).setEnergy(0));
+        return hasFlashed.size();
+    }
+
+    private void doInitialFlashes(Set<Coordinate> hasFlashed) {
         dumbos.values().forEach(dumbo -> {
             dumbo.addEnergy();
             if (dumbo.getEnergy() > 9) {
@@ -44,6 +57,9 @@ public class DumboGrid {
                 hasFlashed.add(dumbo.getCoordinate());
             }
         });
+    }
+
+    private void doAdditionalFlashes(Set<Coordinate> hasFlashed) {
         AtomicInteger newFlashes = new AtomicInteger(0);
         do {
             newFlashes.set(0);
@@ -55,8 +71,6 @@ public class DumboGrid {
                 }
             });
         } while (newFlashes.get() != 0);
-        hasFlashed.forEach(coordinate -> dumbos.get(coordinate).setEnergy(0));
-        return hasFlashed.size();
     }
 
     public void print() {

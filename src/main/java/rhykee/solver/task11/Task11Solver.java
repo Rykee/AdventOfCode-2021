@@ -8,7 +8,6 @@ public class Task11Solver implements Challenge {
 
     @Override
     public void part1(List<String> lines) {
-        //  DumboGrid dumboGrid = new DumboGrid(Arrays.stream(test.split("\n")).collect(Collectors.toList()));
         DumboGrid dumboGrid = new DumboGrid(lines);
         long flashes = 0;
         for (int i = 0; i < 100; i++) {

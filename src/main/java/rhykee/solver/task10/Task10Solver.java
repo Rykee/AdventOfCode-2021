@@ -50,7 +50,8 @@ public class Task10Solver implements Challenge {
         List<Long> scores = lines.stream()
                 .map(this::mapToDeques)
                 .filter(Objects::nonNull)
-                .map(this::calculateScore).sorted(Long::compareTo)
+                .map(this::calculateScore)
+                .sorted(Long::compareTo)
                 .toList();
         Long aLong = scores.get(scores.size() / 2);
         System.out.println("Day 10 2/2: " + aLong);

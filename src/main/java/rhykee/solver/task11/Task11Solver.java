@@ -27,4 +27,5 @@ public class Task11Solver implements Challenge {
         dumboGrid.print();
         System.out.println("Day 11 2/2: " + iteration);
     }
+
 }

@@ -1,7 +1,6 @@
 package rhykee.solver.task11;
 
 import lombok.Data;
-import rhykee.solver.model.Coordinate;
 
 import java.util.List;
 import java.util.Set;

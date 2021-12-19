@@ -1,4 +1,4 @@
-package rhykee.solver.model;
+package rhykee.solver.task11;
 
 import lombok.Data;
 

@@ -1,8 +1,6 @@
 package rhykee.solver.task11;
 
 
-import rhykee.solver.model.Coordinate;
-
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;

@@ -13,7 +13,6 @@ public class Task11Solver implements Challenge {
         for (int i = 0; i < 100; i++) {
             flashes += dumboGrid.flash();
         }
-        dumboGrid.print();
         System.out.println("Day 11 1/2: " + flashes);
     }
 
@@ -24,7 +23,6 @@ public class Task11Solver implements Challenge {
         while (dumboGrid.flash() != dumboGrid.getPopulation()) {
             iteration++;
         }
-        dumboGrid.print();
         System.out.println("Day 11 2/2: " + iteration);
     }
 

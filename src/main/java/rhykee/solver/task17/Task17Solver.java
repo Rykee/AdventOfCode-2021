@@ -2,9 +2,7 @@ package rhykee.solver.task17;
 
 import rhykee.solver.Challenge;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,48 +14,9 @@ public class Task17Solver implements Challenge {
     public void part1(List<String> lines) {
         Matcher matcher = COORDINATE_PATTERN.matcher(lines.get(0));
         matcher.find();
-        int xMin = Integer.parseInt(matcher.group("xLow"));
-        int xMax = Integer.parseInt(matcher.group("xHigh"));
         int yMin = Integer.parseInt(matcher.group("yLow"));
-        int yMax = Integer.parseInt(matcher.group("yHigh"));
 
-        Probe probe = new Probe(new Coordinate(6, 9));
-        Target target = new Target(new Coordinate(20, -5), new Coordinate(30, -10));
-        Set<Coordinate> hits = new HashSet<>();
-        for (int i = 0; i < 20; i++) {
-            hits.add(probe.move());
-        }
-        int minY = hits.stream()
-                .map(Coordinate::getY)
-                .mapToInt(Integer::intValue)
-                .min()
-                .getAsInt();
-        int maxY = hits.stream()
-                .map(Coordinate::getY)
-                .mapToInt(Integer::intValue)
-                .max()
-                .getAsInt();
-        int maxX = hits.stream()
-                .map(Coordinate::getX)
-                .mapToInt(Integer::intValue)
-                .max()
-                .getAsInt();
-
-        for (int j = maxY; j >= minY; j--) {
-            for (int i = 0; i <= maxX + 10; i++) {
-                Coordinate o = new Coordinate(i, j);
-                if (hits.contains(o)) {
-                    System.out.print("#");
-                } else if (target.hasCoordinate(o)) {
-                    System.out.print("T");
-                } else if (i == 0 && j == 0) {
-                    System.out.print("S");
-                } else {
-                    System.out.print(".");
-                }
-            }
-            System.out.println();
-        }
+        System.out.println("Day 17 1/2: " + Math.abs(yMin - 1) * Math.abs(yMin) / 2);
 
     }
 
@@ -71,8 +30,6 @@ public class Task17Solver implements Challenge {
         int yMax = Integer.parseInt(matcher.group("yHigh"));
         Target target = new Target(new Coordinate(xMin, yMax), new Coordinate(xMax, yMin));
 
-        //FELFELÉ
-        //(n^2/2 +n - x = 0)
         int minX = getMinX(target);
         int maxY = Math.abs(target.getBottomRight().getY()) - 1;
 

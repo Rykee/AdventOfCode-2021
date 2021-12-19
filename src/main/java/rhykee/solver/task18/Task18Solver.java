@@ -41,6 +41,10 @@ public class Task18Solver implements Challenge {
         System.out.println("Day 18 2/2: " + maxMagnitude);
     }
 
+    public void testMagn() {
+        System.out.println(getMagnitude("[[[[5,2],5],[8,[3,7]]],[[5,[7,5]],[4,4]]]"));
+    }
+
     private String reduce(String sum) {
         do {
             while (!explode(sum).equals(sum)) {

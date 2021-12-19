@@ -85,7 +85,6 @@ public class Task15Solver implements Challenge {
     @Override
     public void part2(List<String> lines) {
         Integer[][] input = parseInput(lines);
-        printArray(input);
         Graph graph = new Graph();
         Map<Integer, Node> nodes = new HashMap<>();
         Node finalNode = new Node(0, 0, 0);
